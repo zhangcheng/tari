@@ -26,6 +26,9 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        
+
+        
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">
@@ -37,6 +40,7 @@
             }
           });
         </script>
+        
     </head>
     <body class="light">
         <!-- Provide site root to javascript -->
@@ -87,9 +91,11 @@
                             <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                                 <i class="fa fa-bars"></i>
                             </button>
+                            
                             <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                                 <i class="fa fa-search"></i>
                             </button>
+                            
                         </div>
 
                         <h1 class="menu-title"><img src="theme/images/tari-horizontal-logo.png"/> </h1>
@@ -102,6 +108,7 @@
                     </div>
                 </div>
 
+                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
@@ -112,6 +119,8 @@
                         </ul>
                     </div>
                 </div>
+                
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -143,7 +152,7 @@ best made using Github <a href="https://github.com/tari-project/tari/issues?q=is
 <tr><td align="left">Deprecated</td><td align="left"><img src="theme/images/status-deprecated.svg" alt="deprecated" /></td><td align="left">This RFC has been replaced by a newer RFC document, but is still is use in some places and/or versions of Tari.</td></tr>
 <tr><td align="left">Retired</td><td align="left"><img src="theme/images/status-retired.svg" alt="retired" /></td><td align="left">The RFC is no longer in use on the Tari network.</td></tr>
 </tbody></table>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0001overview"><a class="header" href="#rfc-0001overview">RFC-0001/Overview</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0001overview"><a class="header" href="#rfc-0001overview">RFC-0001/Overview</a></h1>
 <h2 id="overview-of-tari-network"><a class="header" href="#overview-of-tari-network">Overview of Tari Network</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -307,7 +316,7 @@ well-functioning network, even while acting in their own self-interest.</p>
 <tr><td align="left">Decentralization</td><td align="left">High</td><td>Low - Med</td></tr>
 <tr><td align="left">Processes digital asset instructions</td><td align="left">Only checkpoints</td><td>Yes</td></tr>
 </tbody></table>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0010codestructure"><a class="header" href="#rfc-0010codestructure">RFC-0010/CodeStructure</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0010codestructure"><a class="header" href="#rfc-0010codestructure">RFC-0010/CodeStructure</a></h1>
 <h2 id="tari-code-structure-and-organization"><a class="header" href="#tari-code-structure-and-organization">Tari Code Structure and Organization</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a> and <a href="https://github.com/delta1">Byron Hambly</a></p>
@@ -423,7 +432,7 @@ deployed as part of the Tari network.</p>
 <p>Github: <a href="https://github.com/tari-project/tari-crypto">tari-project/tari-crypto</a></p>
 <p>Tari Crypto was refactored into its own <a href="https://crates.io/crates/tari_crypto">crate</a>, for ease of use and integration across different projects.
 It includes all cryptographic services, including a Curve25519 implementation.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0100baselayer"><a class="header" href="#rfc-0100baselayer">RFC-0100/BaseLayer</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0100baselayer"><a class="header" href="#rfc-0100baselayer">RFC-0100/BaseLayer</a></h1>
 <h2 id="the-tari-base-layer"><a class="header" href="#the-tari-base-layer">The Tari Base Layer</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -494,7 +503,7 @@ project source code:</p>
 <li>Peer-to-peer networking and messaging services</li>
 </ul>
 <p><a href="RFC-0010_CodeStructure.html">RFC-0010</a> provides more detail on how the source code is structured within the Tari codebase.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0110basenodes"><a class="header" href="#rfc-0110basenodes">RFC-0110/BaseNodes</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0110basenodes"><a class="header" href="#rfc-0110basenodes">RFC-0110/BaseNodes</a></h1>
 <h2 id="base-layer-full-nodes-base-nodes"><a class="header" href="#base-layer-full-nodes-base-nodes">Base Layer Full Nodes (Base Nodes)</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a>, <a href="https://github.com/SWvheerden">S W van heerden</a> and  <a href="https://github.com/sdbondi">Stanley Bondi</a></p>
@@ -659,7 +668,7 @@ enable this. These nodes must sync from another archival node.</p>
 beyond the pruning horizon and still validate the integrity of the blockchain i.e. no coins were destroyed or created 
 beyond what is allowed by consensus rules. A sufficient number of blocks back from the tip should be configured because 
 reorgs are no longer possible beyond that horizon. These nodes can sync from any other base node (archival and pruned).</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0111basenodesarchitecture"><a class="header" href="#rfc-0111basenodesarchitecture">RFC-0111/BaseNodesArchitecture</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0111basenodesarchitecture"><a class="header" href="#rfc-0111basenodesarchitecture">RFC-0111/BaseNodesArchitecture</a></h1>
 <h2 id="base-node-architecture"><a class="header" href="#base-node-architecture">Base Node Architecture</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a>, <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -824,7 +833,7 @@ provides; third-party applications such as block explorers; and, of course, mine
 <li>Block and transaction validation calls</li>
 <li>Block synchronisation calls</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0120consensus"><a class="header" href="#rfc-0120consensus">RFC-0120/Consensus</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0120consensus"><a class="header" href="#rfc-0120consensus">RFC-0120/Consensus</a></h1>
 <h2 id="base-layer-full-nodes-base-nodes-1"><a class="header" href="#base-layer-full-nodes-base-nodes-1">Base Layer Full Nodes (Base Nodes)</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a> and <a href="https://github.com/SWvheerden">S W van heerden</a></p>
@@ -1033,7 +1042,7 @@ N: Block window - This is the amount of blocks used when calculating difficulty 
 THe MTP is calculated as the median timestamp of the previous 11 blocks.</p>
 <h3 id="total-accumulated-proof-of-work"><a class="header" href="#total-accumulated-proof-of-work">Total accumulated proof of work</a></h3>
 <p>This is defined as the total accumulated proof of work done on a single block chain. Because we use two proof of work algorithms which are rated at different difficulties and we would like to weight them as equal we need to compare them. To compare them we use a <a href="https://en.wikipedia.org/wiki/Geometric_mean">Geometric mean</a>. Because we only have two algorithms this is calculated as the ceil of SQRT(accumulated_monero_difficulty*accumulated_blake_difficulty). This number is never transmitted and is simply calculated from the tip of the chain.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0130mining"><a class="header" href="#rfc-0130mining">RFC-0130/Mining</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0130mining"><a class="header" href="#rfc-0130mining">RFC-0130/Mining</a></h1>
 <h2 id="full-node-mining-on-tari-base-layer"><a class="header" href="#full-node-mining-on-tari-base-layer">Full-node Mining on Tari Base Layer</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/hansieodendaal">Hansie Odendaal</a>, <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -1154,7 +1163,7 @@ good choice in the multi-PoW scene as well.</p>
 </ul>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0132mergeminingmonero"><a class="header" href="#rfc-0132mergeminingmonero">RFC-0132/MergeMiningMonero</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0132mergeminingmonero"><a class="header" href="#rfc-0132mergeminingmonero">RFC-0132/MergeMiningMonero</a></h1>
 <h2 id="tari-protocol-for-merge-mining-with-monero"><a class="header" href="#tari-protocol-for-merge-mining-with-monero">Tari protocol for Merge Mining with Monero</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/sdbondi">Stanley Bondi</a></p>
@@ -1284,7 +1293,7 @@ so that the miner submits the found block at either chain's difficulty. The Tari
 <h3 id="submit_block"><a class="header" href="#submit_block"><code>submit_block</code></a></h3>
 <p>The miner submits a solved Monero block (at a difficulty of <code>min(monero_difficulty, tari_difficulty)</code>) to the proxy. The cached
 Tari block is retrieved, enriched with the <code>MoneroPowData</code> struct and submitted to the Tari base node.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0140syncandseeding"><a class="header" href="#rfc-0140syncandseeding">RFC-0140/SyncAndSeeding</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0140syncandseeding"><a class="header" href="#rfc-0140syncandseeding">RFC-0140/SyncAndSeeding</a></h1>
 <h2 id="syncing-strategies-and-objectives"><a class="header" href="#syncing-strategies-and-objectives">Syncing Strategies and Objectives</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/SWvheerden">S W van Heerden</a>, <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -1401,7 +1410,7 @@ after the block is older than the <a href="Glossary.html#pruning-horizon">prunin
 If the Base Node is running in archive mode, it MUST NOT prune. </p>
 <p>When running in pruning mode, <a href="Glossary.html#base-node">Base Node</a>s MUST remove all spent outputs that are older than the 
 <a href="Glossary.html#pruning-horizon">pruning horizon</a> in their current stored <a href="Glossary.html#unspent-transaction-outputs">UTXO</a> set when a new block is received from another <a href="Glossary.html#base-node">Base Node</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0150wallets"><a class="header" href="#rfc-0150wallets">RFC-0150/Wallets</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0150wallets"><a class="header" href="#rfc-0150wallets">RFC-0150/Wallets</a></h1>
 <h2 id="base-layer-wallet-module"><a class="header" href="#base-layer-wallet-module">Base Layer Wallet Module</a></h2>
 <p><img src="https://github.com/tari-project/tari/raw/master/RFC/src/theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/neonknight64">Yuko Roodt</a>, <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -1507,7 +1516,7 @@ transactions, using the keys derived from the master key.</li>
 <li>The master seed key SHOULD be derivable from a specific set of mnemonic word sequences using known word lists.</li>
 <li>It MAY enable the reconstruction of the master seed key by scanning a coded marker of a paper wallet.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="transactionprotocol"><a class="header" href="#transactionprotocol">TransactionProtocol</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="transactionprotocol"><a class="header" href="#transactionprotocol">TransactionProtocol</a></h1>
 <h2 id="transaction-protocol"><a class="header" href="#transaction-protocol">Transaction Protocol</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: Cayle Sharrock <CjS77></p>
@@ -1713,7 +1722,7 @@ because they don't have any of the transaction data at this stage.</p>
 <p>We avoid rogue-key attacks in the Tari multi-recipient scheme by employing three rounds. In the first round, parties share a
 hash of their public nonces, which each party can later use to verify that no nonces were changed after the actual
 public nonces were shared.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0152emojiid"><a class="header" href="#rfc-0152emojiid">RFC-0152/EmojiId</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0152emojiid"><a class="header" href="#rfc-0152emojiid">RFC-0152/EmojiId</a></h1>
 <h2 id="emoji-id-specification"><a class="header" href="#emoji-id-specification">Emoji Id specification</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="Status: Draft" /></p>
 <p><strong>Maintainer(s)</strong>:<a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -1856,7 +1865,7 @@ mapping are not chosen carefully.</p>
 code of 1, which is consistent and expected.</p>
 <p>However, in unlucky version 13, if 😘 moves in the map to number 13 (<code>0b0000_001101</code>), the version decoding would also
 be valid and thus we wouldn't be able to unambiguously identify the version.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0160blockserialization"><a class="header" href="#rfc-0160blockserialization">RFC-0160/BlockSerialization</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0160blockserialization"><a class="header" href="#rfc-0160blockserialization">RFC-0160/BlockSerialization</a></h1>
 <h2 id="tari-block-binary-serialization"><a class="header" href="#tari-block-binary-serialization">Tari Block Binary Serialization</a></h2>
 <p><img src="https://github.com/tari-project/tari/raw/master/RFC/src/theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/delta1">Byron Hambly</a></p>
@@ -2109,7 +2118,7 @@ technological merits of the potential system outlined herein.</p>
 <tr><td>Transaction Outputs</td><td><code>Vec&lt;TransactionOutput&gt;</code></td><td><code>TransactionOutput</code></td><td>List of outputs produced</td></tr>
 <tr><td>Transaction Kernels</td><td><code>Vec&lt;TransactionKernel&gt;</code></td><td><code>TransactionKernel</code></td><td>Kernels contain the excesses and their signatures for the transactions</td></tr>
 </tbody></table>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0170networkcommunicationprotocol"><a class="header" href="#rfc-0170networkcommunicationprotocol">RFC-0170/NetworkCommunicationProtocol</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0170networkcommunicationprotocol"><a class="header" href="#rfc-0170networkcommunicationprotocol">RFC-0170/NetworkCommunicationProtocol</a></h1>
 <h2 id="the-tari-communication-network-and-network-communication-protocol"><a class="header" href="#the-tari-communication-network-and-network-communication-protocol">The Tari Communication Network and Network Communication Protocol</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/neonknight64">Yuko Roodt</a></p>
@@ -2355,7 +2364,7 @@ Losing of a peer might happen in cases where the CN or CC went temporarily offli
 <li>Peers from the CCs routing table that have been unreachable for a number of attempts SHOULD be removed from the its routing table.</li>
 <li>A CC MUST calculate the similarity between different node IDs by calculating the Hamming distance between the bits of the two node ID numbers.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0171messageserialization"><a class="header" href="#rfc-0171messageserialization">RFC-0171/MessageSerialization</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0171messageserialization"><a class="header" href="#rfc-0171messageserialization">RFC-0171/MessageSerialization</a></h1>
 <h2 id="message-serialization"><a class="header" href="#message-serialization">Message Serialization</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -2539,7 +2548,7 @@ it is proposed that a <code>MessageFormat</code> trait be defined:</p>
 <p>This trait will have default implementations to cover most use cases (e.g. a simple call through to <code>serde_json</code>). Serde
 also offers significant ability to tweak how a given struct will be serialized through the use of
 <a href="https://serde.rs/attributes.html">attributes</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0172peertopeermessaging"><a class="header" href="#rfc-0172peertopeermessaging">RFC-0172/PeerToPeerMessaging</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0172peertopeermessaging"><a class="header" href="#rfc-0172peertopeermessaging">RFC-0172/PeerToPeerMessaging</a></h1>
 <h2 id="peer-to-peer-messaging-protocol"><a class="header" href="#peer-to-peer-messaging-protocol">Peer to Peer Messaging Protocol</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/sdbondi">Stanley Bondi</a>, <a href="https://github.com/CjS77">Cayle Sharrock</a> and <a href="https://github.com/neonknight64">Yuko Roodt</a></p>
@@ -3208,7 +3217,7 @@ the connection is bound, a dedicated &quot;secure connection negotiation socket&
 <li>Details of distributed message storage.</li>
 <li>Which <a href="RFC-0172_PeerToPeerMessagingProtocol.html#netaddress">NetAddress</a> to use if a peer has many.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0173versioning"><a class="header" href="#rfc-0173versioning">RFC-0173/Versioning</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0173versioning"><a class="header" href="#rfc-0173versioning">RFC-0173/Versioning</a></h1>
 <h2 id="versioning-1"><a class="header" href="#versioning-1">Versioning</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -3317,7 +3326,7 @@ used in the construction and validation of this block. Consensus rules versions 
 and as such will be represented with a single incremented integer. This coupled with the internal list of fork versions,
 that includes the height at which they came into effect, will be used to validate whether the consensus rules specified 
 in the header are valid for that block's height.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0180-bulletproof-range-proof-rewinding"><a class="header" href="#rfc-0180-bulletproof-range-proof-rewinding">RFC-0180: Bulletproof range proof rewinding</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0180-bulletproof-range-proof-rewinding"><a class="header" href="#rfc-0180-bulletproof-range-proof-rewinding">RFC-0180: Bulletproof range proof rewinding</a></h1>
 <h2 id="bulletproof-range-proof-rewinding"><a class="header" href="#bulletproof-range-proof-rewinding">Bulletproof range proof rewinding</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/hansieodendaal">Hansie Odendaal</a></p>
@@ -3530,7 +3539,7 @@ doubt if the returned value $ v_{(j)} $ is from a specific collection of value c
 <li><a href="https://github.com/jaspervdm">@jaspervdm</a> for his improved bulletproof rewind scheme, used as precurser.</li>
 <li><a href="https://github.com/cathieyun">@cathieyun</a> for provifing valuable feedback to improve this scheme.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="mempool"><a class="header" href="#mempool">Mempool</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="mempool"><a class="header" href="#mempool">Mempool</a></h1>
 <h2 id="the-mempool-for-unconfirmed-transactions-on-the-tari-base-layer"><a class="header" href="#the-mempool-for-unconfirmed-transactions-on-the-tari-base-layer">The Mempool for Unconfirmed Transactions on the Tari Base Layer</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/neonknight64">Yuko Roodt</a></p>
@@ -3735,7 +3744,7 @@ Pending Pool.</li>
 pool.</li>
 <li>Transactions that have been added to blocks and were removed from the Transaction Pool should be added to the Reorg Pool.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="tari-specific-base-layer-extensions"><a class="header" href="#tari-specific-base-layer-extensions">Tari-specific Base Layer Extensions</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="tari-specific-base-layer-extensions"><a class="header" href="#tari-specific-base-layer-extensions">Tari-specific Base Layer Extensions</a></h1>
 <p>This section covers RFCs that describe extensions to the Mimblewimble protocol that enable key functionality for the
 Tari Base layer token and Digital Asset network.</p>
 <ul>
@@ -3744,7 +3753,7 @@ Tari Base layer token and Digital Asset network.</p>
 <li><a href="RFC-0322_VNRegistration.html">RFC-0322: Validator Node Registration</a></li>
 <li><a href="RFC-0341_AssetRegistration.html">RFC-0322: Asset Registration</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0201tariscript"><a class="header" href="#rfc-0201tariscript">RFC-0201/TariScript</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0201tariscript"><a class="header" href="#rfc-0201tariscript">RFC-0201/TariScript</a></h1>
 <h2 id="tariscript"><a class="header" href="#tariscript">TariScript</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -4471,7 +4480,7 @@ validation.</p>
 <li><a href="https://github.com/SWvheerden">@SWvheerden</a></li>
 </ul>
 <p>Thanks to David Burkett for proposing a method to prevent cut-through and willingness to discuss ideas.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0202tariscriptopcodes"><a class="header" href="#rfc-0202tariscriptopcodes">RFC-0202/TariScriptOpcodes</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0202tariscriptopcodes"><a class="header" href="#rfc-0202tariscriptopcodes">RFC-0202/TariScriptOpcodes</a></h1>
 <h2 id="tariscript-opcodes"><a class="header" href="#tariscript-opcodes">TariScript Opcodes</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -4896,7 +4905,7 @@ or Bob can spend the output.</p>
 <h3 id="credits-2"><a class="header" href="#credits-2">Credits</a></h3>
 <p>Thanks to <a href="https://github.com/philipr-za">@philipr-za</a> and <a href="https://github.com/SWvheerden">@SWvheerden</a> for their input
 and contributions to this RFC.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0230time-related-transactions"><a class="header" href="#rfc-0230time-related-transactions">RFC-0230/Time-related Transactions</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0230time-related-transactions"><a class="header" href="#rfc-0230time-related-transactions">RFC-0230/Time-related Transactions</a></h1>
 <h2 id="time-related-transactions"><a class="header" href="#time-related-transactions">Time-related Transactions</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/SWvheerden">S W van Heerden</a></p>
@@ -4992,7 +5001,7 @@ first valid published <a href="Glossary.html#transaction">transaction</a> can th
 <li><a href="https://tlu.tarilabs.com/protocols/atomic-swaps/AtomicSwaps.html">Bitcoin atomic swaps</a></li>
 <li><a href="https://tlu.tarilabs.com/protocols/grin-protocol-overview/MainReport.html#atomic-swaps">Mimblewimble atomic swaps</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0322vnregistration"><a class="header" href="#rfc-0322vnregistration">RFC-0322/VNRegistration</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0322vnregistration"><a class="header" href="#rfc-0322vnregistration">RFC-0322/VNRegistration</a></h1>
 <h2 id="validator-node-registration"><a class="header" href="#validator-node-registration">Validator Node Registration</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -5134,7 +5143,7 @@ if this is the first renewal.</li>
 <p>One will notice that a VN's Node ID does not change as a result of a renewal transaction. Rather, every
 renewal adds to a chain linking back to the original registration transaction. It may be desirable to establish a long
 chain of renewals, in order to offer evidence of longevity and improve a VN's reputation.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0341-asset-registration"><a class="header" href="#rfc-0341-asset-registration">RFC-0341: Asset Registration</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0341-asset-registration"><a class="header" href="#rfc-0341-asset-registration">RFC-0341: Asset Registration</a></h1>
 <h2 id="asset-registration-process"><a class="header" href="#asset-registration-process">Asset Registration Process</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -5236,7 +5245,7 @@ the chosen committee and AI are ready to commit their <code>asset_creation_fee</
 operation of the asset. This is done by the AI and the committee members collaborating to build the initial <a href="Glossary.html#checkpoint">Checkpoint</a> 
 of the asset. When this <a href="Glossary.html#checkpoint">Checkpoint</a> transaction is published to the <a href="Glossary.html#base-layer">base layer</a>, the <a href="Glossary.html#digital-asset">digital asset</a> will be live on 
 the DAN. The <a href="Glossary.html#checkpoint">Checkpoint</a> transaction is described in <a href="RFC-0220_AssetCheckpoints.html">RFC_0220</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0300dan"><a class="header" href="#rfc-0300dan">RFC-0300/DAN</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0300dan"><a class="header" href="#rfc-0300dan">RFC-0300/DAN</a></h1>
 <h2 id="digital-assets-network-1"><a class="header" href="#digital-assets-network-1">Digital Assets Network</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a> and <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -5311,7 +5320,7 @@ Any remaining spots on the committee will be filled by permissionless VNs that a
 <a href="Glossary.html#committeeselectionstrategy">CommitteeSelectionStrategy</a>. This is a strategy that an AI will use to select from the set of potential candidate VNs 
 that nominated themselves for a position on the committee when the AI broadcast a public call for VNs during the asset 
 creation process. For the VNs to accept the appointment to the committee, they will need to put up the specified collateral.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0301namespaceregistration"><a class="header" href="#rfc-0301namespaceregistration">RFC-0301/NamespaceRegistration</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0301namespaceregistration"><a class="header" href="#rfc-0301namespaceregistration">RFC-0301/NamespaceRegistration</a></h1>
 <h2 id="namespace-registration-on-base-layer"><a class="header" href="#namespace-registration-on-base-layer">Namespace Registration on Base Layer</a></h2>
 <p><img src="./theme/images/status-draft.svg" alt="status: raw" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/hansieodendaal">Hansie Odendaal</a></p>
@@ -5552,7 +5561,7 @@ dealing with OpenAlias TXT DNS records:</p>
 Date accessed: 2019-03-05.</p>
 <p>[<a href="https://tools.ietf.org/html/rfc7208" title="RFC 7208">2</a>] RFC 7208: Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1 [online]. 
 Available: <a href="https://tools.ietf.org/html/rfc7208">https://tools.ietf.org/html/rfc7208</a>. Date accessed: 2019-03-06.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0302validatornode"><a class="header" href="#rfc-0302validatornode">RFC-0302/ValidatorNode</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0302validatornode"><a class="header" href="#rfc-0302validatornode">RFC-0302/ValidatorNode</a></h1>
 <h2 id="validator-nodes"><a class="header" href="#validator-nodes">Validator Nodes</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a> and <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -5705,7 +5714,7 @@ against bad actors is still to be decided.</p>
 <li>VNs MUST respond to requests for information about DAs that they manage on the DAN.</li>
 <li>VNs and clients can advertise public keys to facilitate P2P communication encryption.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0304vncommittees"><a class="header" href="#rfc-0304vncommittees">RFC-0304/VNCommittees</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0304vncommittees"><a class="header" href="#rfc-0304vncommittees">RFC-0304/VNCommittees</a></h1>
 <h2 id="validator-node-committee-selection"><a class="header" href="#validator-node-committee-selection">Validator Node Committee Selection</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/philipr-za">Philip Robinson</a></p>
@@ -5794,9 +5803,9 @@ majority position in the committee.</p>
 If the VNs are still inclined to join the committee, they will accept the offer by posting the <a href="Glossary.html#assetcollateral">AssetCollateral</a> 
 required by the asset to the <a href="Glossary.html#base-layer">base layer</a> during the initial <a href="Glossary.html#checkpoint">Checkpoint</a> transaction built to commence the operation of 
 the asset.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="asset-management"><a class="header" href="#asset-management">Asset Management</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="asset-management"><a class="header" href="#asset-management">Asset Management</a></h1>
 <p>This section contains RFCs that describe various aspects of asset management in the Tari network.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0311assettemplates"><a class="header" href="#rfc-0311assettemplates">RFC-0311/AssetTemplates</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0311assettemplates"><a class="header" href="#rfc-0311assettemplates">RFC-0311/AssetTemplates</a></h1>
 <h2 id="digital-asset-templates"><a class="header" href="#digital-asset-templates">Digital Asset Templates</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -6034,7 +6043,7 @@ key, the nonce given in <code>public_nonce</code> field, the <code>raid_id</code
 <p>If step 9 passes, then the VN has proven that the <code>create_asset</code> contains a valid RAID ID, and that if a non-default
 FQDN was provided, the owner of that domain provided the <code>create_asset</code> instruction. In this case, the VN SHOULD
 propagate the instruction to the network.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0345assetlifecycle"><a class="header" href="#rfc-0345assetlifecycle">RFC-0345/AssetLifeCycle</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0345assetlifecycle"><a class="header" href="#rfc-0345assetlifecycle">RFC-0345/AssetLifeCycle</a></h1>
 <h2 id="asset-life-cycle"><a class="header" href="#asset-life-cycle">Asset Life Cycle</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/CjS77">Cayle Sharrock</a></p>
@@ -6157,7 +6166,7 @@ legitimate.</li>
 <p>The VN committee for the resurrected asset need not bear any relation to the original VN committee.
 Once confirmed, the resurrected asset operates exactly like any other asset.
 An asset can expire and be resurrected multiple times (sequentially).</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0340vnconsensusoverview"><a class="header" href="#rfc-0340vnconsensusoverview">RFC-0340/VNConsensusOverview</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0340vnconsensusoverview"><a class="header" href="#rfc-0340vnconsensusoverview">RFC-0340/VNConsensusOverview</a></h1>
 <h2 id="validator-node-consensus-algorithm"><a class="header" href="#validator-node-consensus-algorithm">Validator node consensus algorithm</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: Cayle Sharrock <CjS77></p>
@@ -6382,7 +6391,7 @@ history.</p>
 read-only API.</li>
 <li>Accept smart-contract instructions from clients and forward these onto the other replicas in the VN committee.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0500paymentchannels"><a class="header" href="#rfc-0500paymentchannels">RFC-0500/PaymentChannels</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0500paymentchannels"><a class="header" href="#rfc-0500paymentchannels">RFC-0500/PaymentChannels</a></h1>
 <h2 id="payment-channels"><a class="header" href="#payment-channels">Payment channels</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: Cayle Sharrock <CjS77></p>
@@ -6452,7 +6461,7 @@ have been created or destroyed over the course of the cycle. They do not check t
 are what those users would expect in an honestly run side chain.</p>
 <p>However, if the side-chain is run as a standard mimblewimble process, any third party running a full node and that
 access to the opening and closing channel balances, can in fact verify that the committee has operated honestly.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-1000tariusecases"><a class="header" href="#rfc-1000tariusecases">RFC-1000/TariUseCases</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-1000tariusecases"><a class="header" href="#rfc-1000tariusecases">RFC-1000/TariUseCases</a></h1>
 <h2 id="digital-asset-framework"><a class="header" href="#digital-asset-framework">Digital Asset Framework</a></h2>
 <p><img src="./theme/images/status-draft.svg" alt="status: draft" /></p>
 <p><strong>Maintainer(s)</strong>: <a href="https://github.com/lelandlee">Leland Lee</a></p>
@@ -6668,9 +6677,9 @@ One Day International (ODI) century bat:
 </li>
 <li>Has rules - every time its transferred Supreme and OVO SOUND receive 25% of the transaction value.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="deprecated-rfc"><a class="header" href="#deprecated-rfc">Deprecated RFC</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="deprecated-rfc"><a class="header" href="#deprecated-rfc">Deprecated RFC</a></h1>
 <p>The following documents are either obsolete, or have been superceded by newer RFC documents.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0130mining-1"><a class="header" href="#rfc-0130mining-1">RFC-0130/Mining</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0130mining-1"><a class="header" href="#rfc-0130mining-1">RFC-0130/Mining</a></h1>
 <h2 id="full-node-mining-on-tari-base-layer-1"><a class="header" href="#full-node-mining-on-tari-base-layer-1">Full-node Mining on Tari Base Layer</a></h2>
 <p><img src="theme/images/status-deprecated.svg" alt="status: deprecated" /></p>
 <p><strong>Maintainer(s)</strong>: [Yuko Roodt] (https://github.com/neonknight64)</p>
@@ -6796,7 +6805,7 @@ solutions that do not meet the minimum required difficulty.</li>
 <li>MUST attempt to solve the PoW task at the difficulty specified by the Mining Server. </li>
 <li>MUST submit completed shares to the connected Mining Server. </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="tari-network-terminology"><a class="header" href="#tari-network-terminology">Tari Network Terminology</a></h1>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="tari-network-terminology"><a class="header" href="#tari-network-terminology">Tari Network Terminology</a></h1>
 <p>Below are a list of terms and their definitions that are used throughout the Tari code and documentation. Let's use this
 glossary to disambiguate ideas, and work towards a
 <a href="https://blog.carbonfive.com/2016/10/04/ubiquitous-language-the-joy-of-naming/">ubiquitous language</a> for this project.</p>
@@ -7042,19 +7051,35 @@ transferring and receiving <a href="Glossary.html#tari-coin" title="The base lay
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                        
+
+                        
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
             </nav>
 
         </div>
 
+        
+
+        
+
+        
+
+        
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
@@ -7064,6 +7089,10 @@ transferring and receiving <a href="Glossary.html#tari-coin" title="The base lay
         <script>mermaid.initialize({startOnLoad:true});</script>
 
         <!-- Custom JS scripts -->
+        
+
+        
+        
         <script type="text/javascript">
         window.addEventListener('load', function() {
             MathJax.Hub.Register.StartupHook('End', function() {
@@ -7071,5 +7100,8 @@ transferring and receiving <a href="Glossary.html#tari-coin" title="The base lay
             });
         });
         </script>
+        
+        
+
     </body>
 </html>
