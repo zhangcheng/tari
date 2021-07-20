@@ -248,6 +248,11 @@ asset issuers on the Tari 2nd layer">digital asset</a>.</p>
 <p>The mempool consists of the transaction pool, pending pool, orphan pool and reorg pool, and is responsible for managing
 unconfirmed transactions that have not yet been included in the longest proof-of-work chain. Miners usually draw
 verified transactions from the mempool to build up transaction <a href="#block" title="A collection of transactions and associated metadata recorded as a single entity in the Tari blockchain">block</a>s.</p>
+<h2 id="metadata-signature"><a class="header" href="#metadata-signature">Metadata Signature</a></h2>
+<p>The metadata signature is an aggregated Commitment Signature (&quot;ComSig&quot;) signature, attached to a transaction output and
+signed with a combination of the homomorphic commitment private values \( (v_i \, , \, k_i )\), the spending key
+known only to the receiver, and sender offset private key \(k_{Oi}\) known only to the sender. This prevents
+malleability of the UTXO metadata.</p>
 <h2 id="mimblewimble"><a class="header" href="#mimblewimble">Mimblewimble</a></h2>
 <p>Mimblewimble is a privacy-centric cryptocurrency protocol. It was
 <a href="https://download.wpsoftware.net/bitcoin/wizardry/mimblewimble.txt">dropped</a> in the Bitcoin Developers chatroom by an
@@ -306,12 +311,9 @@ the script public key.</p>
 <h2 id="script-offset"><a class="header" href="#script-offset">Script Offset</a></h2>
 <p>The script offset provides a proof that every script public key \( K_{Si} \) and sender offset public key
 \( K_{Oi} \) provided for the a transaction's inputs and outputs are correct.</p>
-<h2 id="sender-metadata-signature"><a class="header" href="#sender-metadata-signature">Sender Metadata Signature</a></h2>
-<p>The sender metadata signature is used to sign the metadata of the UTXO with the <a href="#sender-offset-keypair">sender offset</a> private key
-\( k_{Oi} \) and this stops malleability of the UTXO metadata.</p>
 <h2 id="sender-offset-keypair"><a class="header" href="#sender-offset-keypair">Sender Offset Keypair</a></h2>
 <p>The sender offset private - public keypair, (\( k_{Oi} \),\( K_{Oi} \)), is used by the sender of an output to
-lock all its metadata by virtue of a <a href="#sender-metadata-signature">sender metadata signature</a>.</p>
+lock all its metadata by virtue of a [sender metadata signature].</p>
 <h2 id="spending-key"><a class="header" href="#spending-key">Spending Key</a></h2>
 <p>A private spending key is a private key that permits spending of a <a href="#unspent-transaction-outputs">UTXO</a>. It is also sometimes referred to as a
 Blinding Factor, since is Tari (and Mimblewimble) outputs, the value of a UTXO is <em>blinded</em> by the spending key:</p>
