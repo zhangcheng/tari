@@ -592,18 +592,19 @@ Arguments for this design are presented <a href="RFC-0001_overview.html#proof-of
 validated and either stored or rejected.</p>
 <p>The transaction is validated as follows:</p>
 <ul>
-<li>All inputs to the transaction are valid <a href="Glossary.html#unspent-transaction-outputs">UTXO</a>s.</li>
+<li>All inputs to the transaction are valid <a href="Glossary.html#unspent-transaction-outputs">UTXO</a>s in the <a href="Glossary.html#unspent-transaction-outputs">UTXO</a> set or are outputs in the current block.</li>
 <li>No inputs are duplicated.</li>
 <li>All inputs are able to be spent (they are not time-locked).</li>
 <li>All inputs are signed by their owners.</li>
 <li>All outputs have valid <a href="Glossary.html#range-proof">range proof</a>s.</li>
-<li>No outputs currently exist in the <a href="Glossary.html#unspent-transaction-outputs">UTXO</a> set.</li>
+<li>No outputs currently exist in the current <a href="Glossary.html#unspent-transaction-outputs">UTXO</a> set.</li>
 <li>The transaction does not have <a href="RFC-0230_HTLC.html#time-locked-contracts">timelocks</a> applied, limiting it from being mined and added to the blockchain before a
 specified block height or timestamp has been reached.</li>
 <li>The transaction excess has a valid signature.</li>
 <li>The <a href="./Glossary.html#transaction-weight">transaction weight</a> does not exceed the maximum permitted in a single block as defined by consensus.</li>
 <li>The transaction excess is a valid public key. This proves that:
 $$ \Sigma \left( \mathrm{inputs} - \mathrm{outputs} - \mathrm{fees} \right) = 0 $$.</li>
+<li>The transaction excess has a unique value across the whole chain.</li>
 <li>The <a href="./RFC-0201_TariScript.html">Tari script</a> of each input must execute successfully and return the public key that signs the script signature. </li>
 <li>The script offset \( \so\) is calculated and verified as per <a href="./RFC-0201_TariScript.html">RFC-0201_TariScript</a>.</li>
 </ul>
@@ -634,6 +635,7 @@ greater than the current chain tip for some preconfigured period.</li>
 </li>
 <li>The sum of all excesses is a valid public key. This proves that:
 $$ \Sigma \left( \mathrm{inputs} - \mathrm{outputs} - \mathrm{fees} \right) = 0$$. </li>
+<li>That all kernel excess values are unique for that block and the entire chain.</li>
 <li>Check if a block contains already spent outputs, reject that block.</li>
 <li>The <a href="./RFC-0201_TariScript.html">Tari script</a> of every input must execute successfully and return the public key that signs the script signature.</li>
 <li>The script offset \( \so\) is calculated and verified as per <a href="./RFC-0201_TariScript.html">RFC-0201_TariScript</a>. This prevents <a href="Glossary.html#cut-through">cut-through</a> from 
@@ -906,6 +908,7 @@ technological merits of the potential system outlined herein.</p>
 <p>each <a href="Glossary.html#unspent-transaction-outputs">transaction output</a> MUST:</p>
 <ul>
 <li>have a unique hash (<code>features || commitment || script</code>)</li>
+<li>have a unique commitment in the current <a href="Glossary.html#unspent-transaction-outputs">UTXO</a> set</li>
 <li>be in a canonical order (see <a href="RFC-0120_Consensus.html#transaction-ordering" title="Canonical Transaction Ordering">Transaction ordering</a>)</li>
 <li>have a valid <a href="Glossary.html#range-proof">range proof</a></li>
 <li>have a valid <a href="Glossary.html#metadata-signature">metadata signature</a></li>
@@ -913,7 +916,11 @@ technological merits of the potential system outlined herein.</p>
 </ul>
 </li>
 <li>
-<p>each [transaction kernel] MUST have a valid kernel signature</p>
+<p>each [transaction kernel] MUST </p>
+<ul>
+<li>have a valid kernel signature</li>
+<li>have a unique excess</li>
+</ul>
 </li>
 <li>
 <p>the transaction commitments and kernels MUST balance, as follows:</p>

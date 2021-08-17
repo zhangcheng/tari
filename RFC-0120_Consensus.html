@@ -205,6 +205,7 @@ technological merits of the potential system outlined herein.</p>
 <p>each <a href="Glossary.html#unspent-transaction-outputs">transaction output</a> MUST:</p>
 <ul>
 <li>have a unique hash (<code>features || commitment || script</code>)</li>
+<li>have a unique commitment in the current <a href="Glossary.html#unspent-transaction-outputs">UTXO</a> set</li>
 <li>be in a canonical order (see <a href="#transaction-ordering" title="Canonical Transaction Ordering">Transaction ordering</a>)</li>
 <li>have a valid <a href="Glossary.html#range-proof">range proof</a></li>
 <li>have a valid <a href="Glossary.html#metadata-signature">metadata signature</a></li>
@@ -212,7 +213,11 @@ technological merits of the potential system outlined herein.</p>
 </ul>
 </li>
 <li>
-<p>each [transaction kernel] MUST have a valid kernel signature</p>
+<p>each [transaction kernel] MUST </p>
+<ul>
+<li>have a valid kernel signature</li>
+<li>have a unique excess</li>
+</ul>
 </li>
 <li>
 <p>the transaction commitments and kernels MUST balance, as follows:</p>
