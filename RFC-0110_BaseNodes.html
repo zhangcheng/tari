@@ -246,6 +246,34 @@ able to be spent.</p>
 <li>added to the <a href="Glossary.html#mempool">mempool</a>;</li>
 <li>forwarded to peers using the transaction <a href="Glossary.html#broadcaststrategy">BroadcastStrategy</a>.</li>
 </ul>
+<h4 id="blocktransaction-weight"><a class="header" href="#blocktransaction-weight">Block/Transaction Weight</a></h4>
+<p>The weight of a transaction / block measured in &quot;grams&quot;. Input, output and kernel weights reflect their respective relative 
+storage and computation cost. Transaction fees are typically proportional to a transaction body's total weight, creating 
+incentive to reduce the size of the UTXO set.</p>
+<p>Given the target block size of <code>S</code> and the choice for 1 gram to represent <code>N</code> bytes, we end up with
+a maximum block weight of <code>S/N</code> grams. </p>
+<p>To illustrate (these values should not be considered authoritative), with an <code>S</code> of 1MiB and <code>N</code> of 16, the block and 
+transaction body weights are as follows:</p>
+<p>|                   	| Byte size 	| Natural Weight         	| Adjust 	| Final                  	|
+|-------------------	|-----------	|------------------------	|--------	|------------------------	|
+| Output            	|           	|                        	|        	|                        	|
+| - Per output      	| 832       	| 52                     	| 0      	| 52                     	|
+| - Tari Script     	| variable  	| size_of(script) / 16   	| 0      	| size_of(script) / 16   	|
+| - Output Features 	| variable  	| size_of(features) / 16 	| 0      	| size_of(features) / 16 	|
+| Input             	|       169 	|                     11 	|     -2 	|                      9 	|
+| Kernel size       	|       113 	|                      8 	|      2 	|                     10 	|</p>
+<p>Pseudocode: </p>
+<pre><code class="language-text">    output_weight = num_outputs * PER_OUTPUT_GRAMS(53)
+    foreach output in outputs:
+        output_weight += serialize(output.script) / BYTES_PER_GRAM
+        output_weight += serialize(output.features) / BYTES_PER_GRAM
+        
+    input_weight = num_inputs * PER_INPUT_GRAMS(9)
+    kernel_weight = num_kernels * PER_KERNEL_GRAMS(10)
+    
+    weight = output_weight + input_weight + kernel_weight
+</code></pre>
+<p>where the capitalized values are hard-coded constants.</p>
 <h3 id="block-validation-and-propagation"><a class="header" href="#block-validation-and-propagation">Block Validation and Propagation</a></h3>
 <p>The block validation and propagation process is analogous to that of transactions. New blocks are received from the 
 peer-to-peer network, or from an API call if the Base Node is connected to a Miner.</p>

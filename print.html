@@ -617,6 +617,34 @@ able to be spent.</p>
 <li>added to the <a href="Glossary.html#mempool">mempool</a>;</li>
 <li>forwarded to peers using the transaction <a href="Glossary.html#broadcaststrategy">BroadcastStrategy</a>.</li>
 </ul>
+<h4 id="blocktransaction-weight"><a class="header" href="#blocktransaction-weight">Block/Transaction Weight</a></h4>
+<p>The weight of a transaction / block measured in &quot;grams&quot;. Input, output and kernel weights reflect their respective relative 
+storage and computation cost. Transaction fees are typically proportional to a transaction body's total weight, creating 
+incentive to reduce the size of the UTXO set.</p>
+<p>Given the target block size of <code>S</code> and the choice for 1 gram to represent <code>N</code> bytes, we end up with
+a maximum block weight of <code>S/N</code> grams. </p>
+<p>To illustrate (these values should not be considered authoritative), with an <code>S</code> of 1MiB and <code>N</code> of 16, the block and 
+transaction body weights are as follows:</p>
+<p>|                   	| Byte size 	| Natural Weight         	| Adjust 	| Final                  	|
+|-------------------	|-----------	|------------------------	|--------	|------------------------	|
+| Output            	|           	|                        	|        	|                        	|
+| - Per output      	| 832       	| 52                     	| 0      	| 52                     	|
+| - Tari Script     	| variable  	| size_of(script) / 16   	| 0      	| size_of(script) / 16   	|
+| - Output Features 	| variable  	| size_of(features) / 16 	| 0      	| size_of(features) / 16 	|
+| Input             	|       169 	|                     11 	|     -2 	|                      9 	|
+| Kernel size       	|       113 	|                      8 	|      2 	|                     10 	|</p>
+<p>Pseudocode: </p>
+<pre><code class="language-text">    output_weight = num_outputs * PER_OUTPUT_GRAMS(53)
+    foreach output in outputs:
+        output_weight += serialize(output.script) / BYTES_PER_GRAM
+        output_weight += serialize(output.features) / BYTES_PER_GRAM
+        
+    input_weight = num_inputs * PER_INPUT_GRAMS(9)
+    kernel_weight = num_kernels * PER_KERNEL_GRAMS(10)
+    
+    weight = output_weight + input_weight + kernel_weight
+</code></pre>
+<p>where the capitalized values are hard-coded constants.</p>
 <h3 id="block-validation-and-propagation"><a class="header" href="#block-validation-and-propagation">Block Validation and Propagation</a></h3>
 <p>The block validation and propagation process is analogous to that of transactions. New blocks are received from the 
 peer-to-peer network, or from an API call if the Base Node is connected to a Miner.</p>
@@ -7569,9 +7597,8 @@ asset issuers on the Tari 2nd layer">Digital asset</a>s and <a href="Glossary.ht
  by asset issuers">Tokens</a>, and for constructing and negotiating
 <a href="Glossary.html#instructions" title="Second-layer network commands for managing digital asset state">instruction</a>s for transferring and receiving Assets and Tokens on the <a href="Glossary.html#digital-asset-network" title="The Tari second layer. All digital asset interactions are managed here.">Digital Asset Network</a>.</p>
 <h2 id="transaction-weight"><a class="header" href="#transaction-weight">Transaction Weight</a></h2>
-<p>The weight of a transaction / block measured in &quot;grams&quot;. Block / transaction weight are defined in the same way:
-<code>weight = num_inputs * PER_INPUT_GRAMS + num_outputs * PER_OUTPUT_GRAMS + num_kernels * PER_KERNEL_GRAMS</code>
-where the capitalized values are hard-coded constants.</p>
+<p>The weight of a transaction / block measured in &quot;grams&quot;. 
+See <a href="./RFC-0110_BaseNodes.html#blocktransaction-weight">Block / Transaction weight</a> for more details.</p>
 <h2 id="unspent-transaction-outputs"><a class="header" href="#unspent-transaction-outputs">Unspent transaction outputs</a></h2>
 <p>An unspent transaction output (UTXO) is a discrete number of Tari that are available to be spent. The sum of all
 UTXOs represents all the Tari currently in circulation. In addition, the sum of all UTXO values equals the sum of the

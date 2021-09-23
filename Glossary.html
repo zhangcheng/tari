@@ -361,9 +361,8 @@ asset issuers on the Tari 2nd layer">Digital asset</a>s and <a href="#digital-as
  by asset issuers">Tokens</a>, and for constructing and negotiating
 <a href="#instructions" title="Second-layer network commands for managing digital asset state">instruction</a>s for transferring and receiving Assets and Tokens on the <a href="#digital-asset-network" title="The Tari second layer. All digital asset interactions are managed here.">Digital Asset Network</a>.</p>
 <h2 id="transaction-weight"><a class="header" href="#transaction-weight">Transaction Weight</a></h2>
-<p>The weight of a transaction / block measured in &quot;grams&quot;. Block / transaction weight are defined in the same way:
-<code>weight = num_inputs * PER_INPUT_GRAMS + num_outputs * PER_OUTPUT_GRAMS + num_kernels * PER_KERNEL_GRAMS</code>
-where the capitalized values are hard-coded constants.</p>
+<p>The weight of a transaction / block measured in &quot;grams&quot;. 
+See <a href="./RFC-0110_BaseNodes.html#blocktransaction-weight">Block / Transaction weight</a> for more details.</p>
 <h2 id="unspent-transaction-outputs"><a class="header" href="#unspent-transaction-outputs">Unspent transaction outputs</a></h2>
 <p>An unspent transaction output (UTXO) is a discrete number of Tari that are available to be spent. The sum of all
 UTXOs represents all the Tari currently in circulation. In addition, the sum of all UTXO values equals the sum of the
