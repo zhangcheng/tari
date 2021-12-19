@@ -4471,7 +4471,7 @@ $$
 $$</li>
 </ul>
 <p>Alice sends the usual first round data to Bob, but now because of TariScript also includes \( K_{Ob} \) and 
-\( R_{MSi} )\. Bob can then complete his side of the transaction as per the <a href="https://tlu.tarilabs.com/protocols/mimblewimble-1/MainReport.html">standard Mimblewimble protocol</a> 
+\( R_{MSi} \). Bob can then complete his side of the transaction as per the <a href="https://tlu.tarilabs.com/protocols/mimblewimble-1/MainReport.html">standard Mimblewimble protocol</a> 
 providing the commitment \(C_b\), its public blinding factor, its rangeproof and the partial transaction signature.
 In addition, Bob also needs to provide a partial metadata signature as per (5) where he commits to all the transaction 
 output metadata with a commitment signature. Because Alice is creating the transaction, she can suggest the script 
@@ -5260,7 +5260,7 @@ and contributions to this RFC.</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0230time-related-transactions"><a class="header" href="#rfc-0230time-related-transactions">RFC-0230/Time-related Transactions</a></h1>
 <h2 id="time-related-transactions"><a class="header" href="#time-related-transactions">Time-related Transactions</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
-<p><strong>Maintainer(s)</strong>: <a href="https://github.com/SWvheerden">S W van Heerden</a></p>
+<p><strong>Maintainer(s)</strong>: <a href="https://github.com/SWvheerden">S W van Heerden</a> and <a href="https://github.com/philipr-za">Philip Robinson</a></p>
 <h1 id="licence-20"><a class="header" href="#licence-20">Licence</a></h1>
 <p><a href="https://opensource.org/licenses/BSD-3-Clause">The 3-Clause BSD Licence</a>.</p>
 <p>Copyright 2019 The Tari Development Community</p>
@@ -5299,22 +5299,10 @@ technological merits of the potential system outlined herein.</p>
 <li><a href="BaseLayerExtensions.html">RFC-0200: Base Layer Extensions</a></li>
 </ul>
 <h2 id="description-15"><a class="header" href="#description-15">Description</a></h2>
-<h4 id="time-locked-contracts"><a class="header" href="#time-locked-contracts">Time-locked Contracts</a></h4>
-<p>In <a href="Glossary.html#mimblewimble">Mimblewimble</a>, time-locked contracts can be accomplished by modifying the kernel of each transaction to include a
-block height. This limits how early in the blockchain lifetime the specific transaction can be included in a block.</p>
-<p>This means that users constructing a transaction:</p>
-<ul>
-<li>MUST include a lock height in the kernel of their transaction; and</li>
-<li>MUST include the lock height in the transaction signature to prevent lock height malleability.</li>
-</ul>
-<p>Tari <a href="Glossary.html#base-node">base node</a>s MUST NOT add any transaction to the mined <a href="Glossary.html#block">block</a> that has not already exceeded its lock height.</p>
-<p>This also adds the following requirement to a <a href="Glossary.html#base-node">base node</a>:</p>
-<ul>
-<li>It MUST reject any <a href="Glossary.html#block">block</a> that contains a kernel with a lock height greater than the <a href="Glossary.html#current-head">current head</a>.</li>
-</ul>
 <h4 id="time-locked-utxos"><a class="header" href="#time-locked-utxos">Time-locked UTXOs</a></h4>
-<p>Time-locked Unspent Transaction Outputs (UTXOs) can be accomplished by adding a feature flag to a UTXO and a lock height. 
-This allows a limit on when in the blockchain lifetime the specific UTXO can be spent.</p>
+<p>Time-locked Unspent Transaction Outputs (UTXOs) can be accomplished by adding a feature flag to a UTXO and a lock height, 
+also referred to as the output's maturity. This allows a consensus limit on after which height the output can be 
+spent.</p>
 <p>This requires that users constructing a transaction:</p>
 <ul>
 <li>MUST include a feature flag of their UTXO; and</li>
@@ -5328,31 +5316,39 @@ This allows a limit on when in the blockchain lifetime the specific UTXO can be 
 <ul>
 <li>A base node MUST reject any <a href="Glossary.html#block">block</a> that contains a <a href="Glossary.html#unspent-transaction-outputs">UTXO</a> with a lock height not already past the <a href="Glossary.html#current-head">current head</a>.</li>
 </ul>
+<h4 id="time-locked-contracts"><a class="header" href="#time-locked-contracts">Time-locked Contracts</a></h4>
+<p>In standard <a href="Glossary.html#mimblewimble">Mimblewimble</a>, time-locked contracts can be accomplished by modifying the kernel of each transaction to 
+include a lock height. This limits how early in the blockchain lifetime the specific transaction can be included in a 
+block. This approach is used in a traditional <a href="Glossary.html#mimblewimble">Mimblewimble</a> construction that does not implement any kind of scripting.
+This has two disadvantages. Firstly, the spending condition is very primitive and cannot be linked to other conditions.
+Secondly, it bloats the kernel, which is a component of the transaction that cannot be pruned.</p>
+<p>However, with <a href="RFC-0201_TariScript.html">TariScript</a> it becomes possible to express spending conditions like a time-lock as part of a UTXO's script.
+The <code>CheckHeightVerify(height)</code> TariScript Op code allows a time-lock check to be incorporated into a script. The following is a simple
+example of a plain time-lock script that prevents an output from being spent before the chain reaches height 4000:</p>
+<pre><code class="language-text">CheckHeightVerify(4000)
+</code></pre>
 <h4 id="hashed-time-locked-contract"><a class="header" href="#hashed-time-locked-contract">Hashed Time-locked Contract</a></h4>
-<p>Hashed time-locked contracts are a way of reserving funds for a certain payment, but they only pay out to the receiver if
-certain conditions are met. If these conditions are not met within a time limit, the funds are paid back to the sender.</p>
-<p>Unlike Bitcoin, where this can be accomplished with a single transaction, in <a href="Glossary.html#mimblewimble">Mimblewimble</a>, HTLCs involve a multi-step
-process to construct a time-locked contract.</p>
-<p>The steps are as follows:</p>
-<ul>
-<li>The sender MUST pay all the funds into an n-of-n <a href="Glossary.html#multisig">multisig</a> <a href="Glossary.html#unspent-transaction-outputs">UTXO</a>.</li>
-<li>All parties involved MUST construct a refund <a href="Glossary.html#transaction">transaction</a> to pay back all funds to the sender who has spent this n-of-n
-<a href="Glossary.html#multisig">multisig</a> <a href="Glossary.html#unspent-transaction-outputs">UTXO</a>. However, this <a href="Glossary.html#transaction">transaction</a> has a transaction lock height set in
-the future and cannot be mined immediately. It therefore lives in the <a href="Glossary.html#mempool">mempool</a>. This means that if anything goes
-wrong from here on, the sender will get their money back after the time lock expires.</li>
-<li>The sender MUST publish both above <a href="Glossary.html#transaction">transaction</a>s at the same time to ensure the receiver cannot hold the sender hostage.</li>
-<li>The parties MUST construct a third <a href="Glossary.html#transaction">transaction</a> that pays the receiver the funds. This <a href="Glossary.html#transaction">transaction</a> typically makes
-use of a preimage to allow spending of the <a href="Glossary.html#transaction">transaction</a> if the user reveals some knowledge, allowing the user to
-unlock the <a href="Glossary.html#unspent-transaction-outputs">UTXO</a>.</li>
-</ul>
-<p>HTLCs in <a href="Glossary.html#mimblewimble">Mimblewimble</a> make use of double-spending of the n-of-n <a href="Glossary.html#multisig">multisig</a> <a href="Glossary.html#unspent-transaction-outputs">UTXO</a>. The
-first valid published <a href="Glossary.html#transaction">transaction</a> can then be mined and claim the n-of-n <a href="Glossary.html#multisig">multisig</a>
-<a href="Glossary.html#unspent-transaction-outputs">UTXO</a>.</p>
-<p>An example of an <a href="Glossary.html#hashed-time-locked-contract">HTLC</a> in practice can be viewed at Tari University:</p>
-<ul>
-<li><a href="https://tlu.tarilabs.com/protocols/atomic-swaps/AtomicSwaps.html">Bitcoin atomic swaps</a></li>
-<li><a href="https://tlu.tarilabs.com/protocols/grin-protocol-overview/MainReport.html#atomic-swaps">Mimblewimble atomic swaps</a></li>
-</ul>
+<p>Hashed time-locked contracts (<a href="Glossary.html#hashed-time-locked-contract">HTLC</a>) are a way of reserving funds that can only be spent if a hash pre-image can be provided or
+if a specified amount of time has passed. The hash pre-image is a secret that can be revealed under the right conditions
+to enable spending of the UTXO before the time-lock is reached. The secret can be directly exchanged between the parties or
+revealed to the other party by spending an output that makes use of an adaptor signature.</p>
+<p><a href="Glossary.html#hashed-time-locked-contract">HTLC</a>s enable a number of interesting transaction constructions. For example, <a href="https://tlu.tarilabs.com/protocols/atomic-swaps/AtomicSwaps.html">Atomic Swaps</a>
+and Payment Channels like those in the <a href="https://tlu.tarilabs.com/protocols/lightning-network-for-dummies">Lightning Network</a>.</p>
+<p>The following is an example of an <a href="Glossary.html#hashed-time-locked-contract">HTLC</a> script. In this script, Alice sends some Tari to Bob that he can spend using the 
+private key of <code>P_b</code> if he can provide the pre-image to the SHA256 hash output (<code>HASH256{pre_image}</code>) specified in the script
+by Alice. If Bob has not spent this UTXO before the chain reaches height 5000 then Alice will be able to spend the output
+using the private key of <code>P_a</code>.</p>
+<pre><code class="language-text">HashSha256
+PushHash(HASH256{pre_image})
+Equal
+IFTHEN
+   PushPubkey(P_b)
+ELSE
+   CheckHeightVerify(5000)
+   PushPubkey(P_a)
+ENDIF
+</code></pre>
+<p>A more detailed analysis of the execution of this kind of script can be found at <a href="RFC-0202_TariScriptOpcodes.html#time-locked-contract">Time-locked Contact</a></p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0240atomic-swap"><a class="header" href="#rfc-0240atomic-swap">RFC-0240/Atomic Swap</a></h1>
 <h2 id="time-related-transactions-1"><a class="header" href="#time-related-transactions-1">Time-related Transactions</a></h2>
 <p><img src="theme/images/status-draft.svg" alt="status: draft" /></p>
