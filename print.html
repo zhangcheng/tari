@@ -5082,6 +5082,12 @@ push 0.</p>
 <h5 id="checksigverifymsg"><a class="header" href="#checksigverifymsg">CheckSigVerify(Msg),</a></h5>
 <p>Identical to <a href="RFC-0202_TariScriptOpcodes.html#checksigmsg"><code>CheckSig</code></a>, except that nothing is pushed to the stack if the signature is valid, and the
 operation fails with <code>VERIFY_FAILED</code> if the signature is invalid.</p>
+<h5 id="toristrettopoint"><a class="header" href="#toristrettopoint">ToRistrettoPoint,</a></h5>
+<p>Pops the top element which must be a valid Ristretto scalar, calculates the corresponding Ristretto point, and pushes this to the stack.</p>
+<ul>
+<li>Fails with <code>EMPTY_STACK</code> if the stack is empty.</li>
+<li>Fails with <code>INVALID_INPUT</code> if the top stack element is not a scalar.</li>
+</ul>
 <h3 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h3>
 <h5 id="return"><a class="header" href="#return">Return</a></h5>
 <p>Always fails with <code>VERIFY_FAILED</code>.</p>
@@ -5110,9 +5116,10 @@ be operated on <em>first</em>!</p>
 <table><thead><tr><th align="left">Type</th><th align="left">Range / Value</th></tr></thead><tbody>
 <tr><td align="left">Integer</td><td align="left">64-bit signed integer</td></tr>
 <tr><td align="left">Hash</td><td align="left">32-byte hash value</td></tr>
-<tr><td align="left">PublicKey</td><td align="left">32-byte public key</td></tr>
-<tr><td align="left">Signature</td><td align="left">32-byte nonce +  32-byte signature</td></tr>
+<tr><td align="left">PublicKey</td><td align="left">32-byte Ristretto public key</td></tr>
+<tr><td align="left">Signature</td><td align="left">32-byte nonce + 32-byte signature</td></tr>
 <tr><td align="left">Data</td><td align="left">single byte, n, indicating length of data, followed by n bytes of data</td></tr>
+<tr><td align="left">RistrettoScalar</td><td align="left">32-byte Ristretto secret key</td></tr>
 </tbody></table>
 <h2 id="example-scripts"><a class="header" href="#example-scripts">Example scripts</a></h2>
 <h3 id="anyone-can-spend"><a class="header" href="#anyone-can-spend">Anyone can spend</a></h3>
