@@ -200,16 +200,16 @@ A recipient will distribute the public keys out of band to receive <a href="./RF
 <li>Sender generates a random nonce key-pair \( R = r \cdot G \).</li>
 <li>Sender calculates a ECDH shared secret \(c = H( r \cdot a \cdot G ) = H( a \cdot R) = H( r \cdot A) \), where
 \( H( \cdot ) \) is a cryptographic hash function.</li>
-<li>The sender will then use \( K_s = c \cdot G + B \) as the last public key in the <a href="./RFC-0201_TariScript.html#one-sided-payment">one-sided payment</a> script. </li>
+<li>The sender will then use \( K_S = c \cdot G + B \) as the last public key in the <a href="./RFC-0201_TariScript.html#one-sided-payment">one-sided payment</a> script. </li>
 <li>The sender includes  \( R \) for the receiver but dropping it as it is not required during script execution. 
-This changes the script for a <a href="./RFC-0201_TariScript.html#one-sided-payment">one-sided payment</a> from <code>PushPubkey(K_s)</code> to <code>PushPubkey(R) Drop PushPubkey(K_s)</code>.</li>
+This changes the script for a <a href="./RFC-0201_TariScript.html#one-sided-payment">one-sided payment</a> from <code>PushPubkey(K_S)</code> to <code>PushPubkey(R) Drop PushPubkey(K_S)</code>.</li>
 </ol>
 <p>The recipient will need to scan the blockchain for outputs that contain scripts of the <a href="./RFC-0201_TariScript.html#one-sided-payment">one-sided payment</a> form, and when
 one is found they will need to do the following:</p>
 <ol>
 <li>Extract the nonce \( R \) from the script.</li>
 <li>Use the public nonce to calculate the shared secret \(c = H( a \cdot R) \)</li>
-<li>Calculate \( K_s \) and check if it exists in the script.</li>
+<li>Calculate \( K_S \) and check if it exists in the script.</li>
 <li>If it exists, the recipient can produce the script signature required using the private key calculated by \( c + b \). 
 This private key can only be computed by the recipient using \( b \).</li>
 </ol>
