@@ -907,7 +907,7 @@ technological merits of the potential system outlined herein.</p>
 <li><a href="RFC-0140_Syncing_and_seeding.html">RFC-0140: SyncAndSeeding</a></li>
 </ul>
 <h2 id="description-4"><a class="header" href="#description-4">Description</a></h2>
-<p>Blockchain consensus is a set of rules that a majority of nodes agree on, that determines the state of the blockchain. </p>
+<p>Blockchain consensus is a set of rules that a majority of nodes agree on that determines the state of the blockchain. </p>
 <p>This RFC details the consensus rules for the Tari network. </p>
 <h3 id="blocks"><a class="header" href="#blocks">Blocks</a></h3>
 <p>Every <a href="Glossary.html#block">block</a> MUST:</p>
@@ -922,7 +922,7 @@ technological merits of the potential system outlined herein.</p>
 <p>have a total <a href="Glossary.html#transaction-weight">transaction weight</a> less than the consensus maximum</p>
 </li>
 <li>
-<p>be able to calculate matching Merkle roots (<a href="RFC-0120_Consensus.html#kernel_mr" title="Kernel Merkle root">kernel_mr</a>, <a href="RFC-0120_Consensus.html#output_mr" title="Output Merkle root">output_mr</a>, <a href="RFC-0120_Consensus.html#witness_mr" title="Witness Merkle root">witness_mr</a> and <a href="RFC-0120_Consensus.html#input_mr" title="Input Merkle root">input_mr</a>) </p>
+<p>be able to calculate matching Merkle roots (<a href="RFC-0120_Consensus.html#kernel_mr" title="Kernel Merkle root">kernel_mr</a>, <a href="RFC-0120_Consensus.html#output_mr" title="Output Merkle root">output_mr</a>, <a href="RFC-0120_Consensus.html#witness_mr" title="Witness Merkle root">witness_mr</a>, and <a href="RFC-0120_Consensus.html#input_mr" title="Input Merkle root">input_mr</a>) </p>
 </li>
 <li>
 <p>each <a href="Glossary.html#transaction">transaction input</a> MUST: </p>
@@ -954,11 +954,11 @@ technological merits of the potential system outlined herein.</p>
 <p>the transaction commitments and kernels MUST balance, as follows:</p>
 <p>$$
 \begin{align}
-\sum_i\mathrm{Cout_{i}} - \sum_j\mathrm{Cin_{j}} + \text{fees}H \stackrel{?}{=} \sum_k\mathrm{K_k} + \text{offset}
-\ \text{each output}, i,
-\ \text{for each input} j,
-\ \text{and each kernel excess}, k
-\ \textit{offset }\text{is the total kernel offset}
+&amp;\sum_i\mathrm{Cout_{i}} - \sum_j\mathrm{Cin_{j}} + \text{fees} \cdot H \stackrel{?}{=} \sum_k\mathrm{K_k} + \text{offset} \\
+&amp; \text{for each output}, i, \\
+&amp; \text{for each input}, j, \\
+&amp; \text{for each kernel excess}, k \\
+&amp; \text{and }\textit{offset }\text{is the total kernel offset} \\
 \end{align}
 \tag{1}
 $$</p>
@@ -1017,7 +1017,7 @@ sent it.</p>
 <p>The height MUST conform to the following:</p>
 <ul>
 <li>Represented as an unsigned 64-bit integer.</li>
-<li>The height MUST be exactly 1 more than the block referenced in the <code>prev_hash</code> block header field.</li>
+<li>The height MUST be exactly one more than the block referenced in the <code>prev_hash</code> block header field.</li>
 <li>The genesis block MUST have a height of 0.</li>
 </ul>
 <h4 id="prev_hash"><a class="header" href="#prev_hash">Prev_hash</a></h4>
@@ -1044,7 +1044,7 @@ of all the outputs that have ever been spent. </p>
 <p>The output_mr MUST conform to the following:</p>
 <ul>
 <li>Represented as an array of unsigned 8-bit integers (bytes) in little-endian format.</li>
-<li>The hashing function used MUST be blake2b with a 256 bit digest.</li>
+<li>The hashing function used MUST be blake2b with a 256-bit digest.</li>
 </ul>
 <h4 id="output_mmr_size"><a class="header" href="#output_mmr_size">Output_mmr_size</a></h4>
 <p>This is the total size of the leaves in the output Merkle mountain range.</p>
@@ -1054,28 +1054,28 @@ of all the outputs that have ever been spent. </p>
 </ul>
 <h4 id="input_mr"><a class="header" href="#input_mr">Input_mr</a></h4>
 <p>This is the Merkle root of all the inputs in the block, which consists of the hashed inputs. It is used to prove that 
-all inputs are correct and not changed after mining. This MUST be constructed by adding in order, the hash of every 
+all inputs are correct and not changed after mining. This MUST be constructed by adding, in order, the hash of every 
 input contained in the block. </p>
 <p>The input_mr MUST conform to the following:</p>
 <ul>
 <li>Represented as an array of unsigned 8-bit integers (bytes) in little-endian format.</li>
-<li>The hashing function used must be blake2b with a 256 bit digest.</li>
+<li>The hashing function must be blake2b with a 256-bit digest.</li>
 </ul>
 <h4 id="witness_mr"><a class="header" href="#witness_mr">Witness_mr</a></h4>
-<p>This is the Merkle root of the output witness data, specifically the <a href="Glossary.html#range-proof">range proof</a> and 
-metadata signatures of all created outputs. This MUST be constructed by 
-Hash ( <code>RangeProof</code> || <code>metadata commitment signature</code>) in order for every output contain in the block.</p>
+<p>This is the Merkle root of the output witness data, specifically all created outputs’ <a href="Glossary.html#range-proof">range proof</a>s and 
+metadata signatures. This MUST be constructed by 
+Hash ( <code>RangeProof</code> || <code>metadata commitment signature</code>), in order, for every output contained in the block.</p>
 <p>The witness_mr MUST conform to the following:</p>
 <ul>
 <li>Represented as an array of unsigned 8-bit integers (bytes) in little-endian format.</li>
-<li>The hashing function used must be blake2b with a 256 bit digest.</li>
+<li>The hashing function used must be blake2b with a 256-bit digest.</li>
 </ul>
 <h4 id="kernel_mr"><a class="header" href="#kernel_mr">Kernel_mr</a></h4>
 <p>This is the Merkle root of the outputs.</p>
-<p>The kernel_mr MUST conform to the following:.</p>
+<p>The kernel_mr MUST conform to the following:</p>
 <ul>
 <li>Must be transmitted as an array of unsigned 8-bit integers (bytes) in little-endian format.</li>
-<li>The hashing function used must be blake2b with a 256 bit digest.</li>
+<li>The hashing function used must be blake2b with a 256-bit digest.</li>
 </ul>
 <h4 id="kernel_mmr_size"><a class="header" href="#kernel_mmr_size">Kernel_mmr_size</a></h4>
 <p>This is the total size of the leaves in the kernel Merkle mountain range.</p>
@@ -1084,13 +1084,13 @@ Hash ( <code>RangeProof</code> || <code>metadata commitment signature</code>) in
 <li>Represented as a single unsigned 64-bit integer.</li>
 </ul>
 <h4 id="total_kernel_offset"><a class="header" href="#total_kernel_offset">Total_kernel_offset</a></h4>
-<p>This is total summed offset of all the transactions contained in this block.</p>
+<p>This is the total summed offset of all the transactions in this block.</p>
 <p>The total_kernel_offset MUST conform to the following:</p>
 <ul>
 <li>Must be transmitted as an array of unsigned 8-bit integers (bytes) in little-endian format</li>
 </ul>
 <h4 id="total_script_offset"><a class="header" href="#total_script_offset">Total_script_offset</a></h4>
-<p>This is total summed script offset of all the transactions contained in this block.</p>
+<p>This is the total summed script offset of all the transactions in this block.</p>
 <p>The total_script_offset MUST conform to the following:</p>
 <ul>
 <li>Must be transmitted as an array of unsigned 8-bit integers (bytes) in little-endian format</li>
@@ -1099,7 +1099,7 @@ Hash ( <code>RangeProof</code> || <code>metadata commitment signature</code>) in
 <p>This is the total accumulated difficulty of the mined chained.</p>
 <p>The total_difficulty MUST conform to the following:</p>
 <ul>
-<li>Must be transmitted as unsigned 64-bit integer.</li>
+<li>Must be transmitted as an unsigned 64-bit integer.</li>
 <li>MUST be larger than the previous block's <code>total_difficulty</code>.</li>
 <li>meet the difficulty target for the block as determined by the consensus difficulty algorithm.</li>
 </ul>
@@ -1107,16 +1107,16 @@ Hash ( <code>RangeProof</code> || <code>metadata commitment signature</code>) in
 <p>This is the nonce used in solving the Proof of Work.</p>
 <p>The nonce MUST conform to the following:</p>
 <ul>
-<li>Must be transmitted as unsigned 64-bit integer;</li>
+<li>Must be transmitted as an unsigned 64-bit integer;</li>
 </ul>
 <h4 id="pow"><a class="header" href="#pow">PoW</a></h4>
-<p>This is Proof of Work algorithm that was used to solve the Proof of Work. This is used in conjunction with the Nonce</p>
+<p>This is the Proof of Work algorithm used to solve the Proof of Work. This is used in conjunction with the Nonce.</p>
 <p>The [PoW] MUST contain the following:</p>
 <ul>
-<li>accumulated_monero_difficulty as unsigned 64-bit integer.</li>
-<li>accumulated_blake_difficulty as unsigned 64-bit integer.</li>
-<li>pow_algo as an enum (0 for monero, 1 for blake).</li>
-<li>pow_data as array of unsigned 8-bit integers (bytes) in little-endian format.</li>
+<li>accumulated_monero_difficulty as an unsigned 64-bit integer.</li>
+<li>accumulated_blake_difficulty as an unsigned 64-bit integer.</li>
+<li>pow_algo as an enum (0 for Monero, 1 for Sha3).</li>
+<li>pow_data as an array of unsigned 8-bit integers (bytes) in little-endian format.</li>
 </ul>
 <h4 id="difficulty-calculation"><a class="header" href="#difficulty-calculation">Difficulty Calculation</a></h4>
 <p>The target difficulty represents how difficult it is to mine a given block. This difficulty is not fixed and needs to
@@ -1126,43 +1126,46 @@ $$
 \newcommand{\solvetime}{ \mathrm{ST_i} }
 \newcommand{\solvetimemax}{ \mathrm{ST_{max}} }
 $$</p>
-<p>| Symbol                 	| Value                   	| Description                                                                                                                	|
-|--------------------------	|-------------------------	|----------------------------------------------------------------------------------------------------------------------------	|
-| N                        	| 90                      	| Target difficulty block window                                                                                             	|
-| T                        	| SHA3: 300 Monero: 200    	| Target block time in seconds.  The value used depends on the  PoW algorithm being used.                                    	|
-| \( \solvetimemax \)    	| SHA3: 1800 Monero: 1200 	| Maximum solve time.  This is 6 times the target time  of the current PoW algorithm.                                        	|
-| \( \solvetime \)    	| variable                	| The timestamp difference in seconds between  block <em>i</em> and <em>i - 1</em> where \( 1 \le \solvetime \le \solvetimemax \) 	|
-| \( \mathrm{D_{avg}} \) 	| variable                	| The average difficulty of the last <em>N</em> blocks                                                                              	|</p>
+<table><thead><tr><th>Symbol</th><th>Value</th><th>Description</th></tr></thead><tbody>
+<tr><td>N</td><td>90</td><td>Target difficulty block window</td></tr>
+<tr><td>T</td><td>SHA3: 300 Monero: 200</td><td>Target block time in seconds.  The value used depends on the  PoW algorithm being used.</td></tr>
+<tr><td>\( \solvetimemax \)</td><td>SHA3: 1800 Monero: 1200</td><td>Maximum solve time.  This is six times the target time  of the current PoW algorithm.</td></tr>
+<tr><td>\( \solvetime \)</td><td>variable</td><td>The timestamp difference in seconds between  block <em>i</em> and <em>i - 1</em> where \( 1 \le \solvetime \le \solvetimemax \)</td></tr>
+<tr><td>\( \mathrm{D_{avg}} \)</td><td>variable</td><td>The average difficulty of the last <em>N</em> blocks</td></tr>
+</tbody></table>
 <p>$$
 \begin{align}
-\ \textit{weighted_solve_time} = \sum\limits_{i=1}^N(\solvetime*i) 
-\ \textit{weighted_target_time} = (\sum\limits_{i=1}^Ni) * \mathrm{T} 
-\ \textit{difficulty} = \mathrm{D_{avg}} * \frac{\textit{weighted_target_time}}{\textit{weighted_solve_time}}
+&amp; \textit{weighted_solve_time} = \sum\limits_{i=1}^N(\solvetime*i)  \\
+&amp; \textit{weighted_target_time} = (\sum\limits_{i=1}^Ni) * \mathrm{T} \\
+&amp; \textit{difficulty} = \mathrm{D_{avg}} * \frac{\textit{weighted_target_time}}{\textit{weighted_solve_time}}\\
 \end{align}
 \tag{2}
 $$</p>
-<p>It is important to note that the 2 proof of work algorithms are calculated <em>independently</em>. i.e. if the current block is using <em>SHA3</em> proof of work, the block window and solve times only include <em>SHA3</em> blocks and vice versa.</p>
+<p>It is important to note that the two proof of work algorithms are calculated <em>independently</em>. i.e., if the current block uses <em>SHA3</em> proof of work, the block window and solve times only include <em>SHA3</em> blocks and vice versa.</p>
 <h3 id="ftl"><a class="header" href="#ftl">FTL</a></h3>
 <p>The Future Time Limit. This is how far into the future a time is accepted as a valid time. Any time that is more than the FTL is rejected until such a time that it is not less than the FTL.
 The FTL is calculated as (T*N)/20 with T and N defined as:
-T: Target time - This is the ideal time that should pass between blocks which have been mined.
-N: Block window - This is the amount of blocks used when calculating difficulty adjustments.</p>
+T: Target time - This is the ideal time that should pass between blocks that have been mined.
+N: Block window - This is the number of blocks used when calculating difficulty adjustments.</p>
 <h3 id="mtp"><a class="header" href="#mtp">MTP</a></h3>
 <p>The Median Time Passed (MTP) is the lower bound calculated by taking the median average timestamp of the 
 last <em>N</em> blocks. Any block with a timestamp that is less than MTP will be rejected.</p>
 <h3 id="total-accumulated-proof-of-work"><a class="header" href="#total-accumulated-proof-of-work">Total accumulated proof of work</a></h3>
-<p>This is defined as the total accumulated proof of work done on the blockchain. Tari uses two <em>independent</em> proof of work algorithms that are
+<p>This is defined as the total accumulated proof of work done on the blockchain. Tari uses two <em>independent</em> proof of work algorithms 
 rated at different difficulties. To compare them, we simply multiply them together into one number:
 $$
+\begin{align}
 \textit{accumulated_monero_difficulty} * \textit{accumulated_sha_difficulty} 
+\end{align}
+\tag{3}
 $$
 This value is used to compare chain tips to determine the strongest chain.</p>
 <h3 id="transaction-ordering"><a class="header" href="#transaction-ordering">Transaction Ordering</a></h3>
-<p>The order in which transaction inputs, outputs and kernels are added to the Merkle mountain range completely changes the
-final Merkle root. Input, output and kernel ordering within a block is therefore part of consensus. </p>
+<p>The order in which transaction inputs, outputs, and kernels are added to the Merkle mountain range completely changes the
+final Merkle root. Input, output, and kernel ordering within a block is, therefore, part of the consensus. </p>
 <p>The block MUST be transmitted in canonical ordering. The advantage of this approach is that sorting does not need to be 
-done by the whole network, and verification of sorting is extremely cheap.</p>
-<p>Transaction inputs and outputs are sorted by their Pedersen commitment i.e. <code>kG + vH</code>. Specifically, the byte representation of the 
+done by the whole network, and verification of sorting is exceptionally cheap.</p>
+<p>Transaction inputs and outputs are sorted by their Pedersen commitment i.e. <code>\\(k \cdot G + v \cdot H\\)</code>. Specifically, the byte representation of the 
 compressed <a href="https://docs.rs/curve25519-dalek/3.1.0/curve25519_dalek/ristretto/index.html">Ristretto</a> point of the commitment.</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="rfc-0130mining"><a class="header" href="#rfc-0130mining">RFC-0130/Mining</a></h1>
 <h2 id="full-node-mining-on-tari-base-layer"><a class="header" href="#full-node-mining-on-tari-base-layer">Full-node Mining on Tari Base Layer</a></h2>
